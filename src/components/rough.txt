@@ -1,0 +1,14 @@
+#include "mbed.h"
+IntruptIn switch (D3);
+DigitalOut led (D2);
+
+void toggle() {
+    led = !led;
+}
+
+int main(){
+    switch.rise(&toggle)
+    while (1) {
+        
+    }
+}
