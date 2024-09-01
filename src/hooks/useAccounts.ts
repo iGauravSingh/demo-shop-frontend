@@ -9,7 +9,8 @@ import {
 
 const cookie = new Cookie();
 
-const urllocal = "http://localhost:8080";
+// const urllocal = "http://localhost:8080";
+const urllive = "https://demo-shop-h8s9.onrender.com"
 
 const useAccounts = () => {
   // const sessionToken = cookie.get("session_token");
@@ -18,7 +19,7 @@ const useAccounts = () => {
   //
   const fetchAccountsList = async () => {
     try {
-      const response = await axios.get(`${urllocal}/users/allusers`, {
+      const response = await axios.get(`${urllive}/users/allusers`, {
         headers: {
           ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : null),
         },
@@ -38,7 +39,7 @@ const useAccounts = () => {
   const deleteAccountwithId = async (id: number) => {
     try {
       const response = await axios.delete(
-        `${urllocal}/users/deleteuser/${id}`,
+        `${urllive}/users/deleteuser/${id}`,
         {
           headers: {
             ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : null),

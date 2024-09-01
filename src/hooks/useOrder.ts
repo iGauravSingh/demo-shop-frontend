@@ -5,7 +5,8 @@ import Cookie from "universal-cookie";
 
 const cookie = new Cookie();
 
-const urllocal = "http://localhost:8080";
+// const urllocal = "http://localhost:8080";
+const urllive = "https://demo-shop-h8s9.onrender.com"
 
 const useOrder = () => {
   const sessionToken = cookie.get("session_token");
@@ -13,7 +14,7 @@ const useOrder = () => {
 
   const fetchUserOrder = async () => {
     try {
-      const response = await axios.get(`${urllocal}/orders/userorders`, {
+      const response = await axios.get(`${urllive}/orders/userorders`, {
         headers: {
           ...(sessionToken
             ? { Authorization: `Bearer ${sessionToken}` }
@@ -28,7 +29,7 @@ const useOrder = () => {
 
   const fetchAllOrder = async () => {
     try {
-      const response = await axios.get(`${urllocal}/orders/allorders`, {
+      const response = await axios.get(`${urllive}/orders/allorders`, {
         headers: {
           ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : null),
         },
@@ -41,7 +42,7 @@ const useOrder = () => {
 
   const createUserOrder = async (data: any) => {
     try {
-      const response = await axios.post(`${urllocal}/orders/add`, data, {
+      const response = await axios.post(`${urllive}/orders/add`, data, {
         headers: {
           ...(sessionToken
             ? { Authorization: `Bearer ${sessionToken}` }

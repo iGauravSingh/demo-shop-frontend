@@ -10,7 +10,8 @@ import {
 
 const cookie = new Cookie();
 
-const urllocal = "http://localhost:8080";
+// const urllocal = "http://localhost:8080";
+const urllive = "https://demo-shop-h8s9.onrender.com"
 
 const useProducts = () => {
   const adminToken = cookie.get("admin_token");
@@ -18,7 +19,7 @@ const useProducts = () => {
 
   const fetchProductsList = async () => {
     try {
-      const response = await axios.get(`${urllocal}/products/getall`);
+      const response = await axios.get(`${urllive}/products/getall`);
       const productsData = response.data;
       if (!productsData) {
         return dispatch(clearproducts());
@@ -34,7 +35,7 @@ const useProducts = () => {
   const createProducts = async (data: any) => {
     try {
       const response = await axios.post(
-        `${urllocal}/products/addproduct`,
+        `${urllive}/products/addproduct`,
         data,
         {
           headers: {
@@ -59,7 +60,7 @@ const useProducts = () => {
   const deleteProductwithId = async (id: number) => {
     try {
       const response = await axios.delete(
-        `${urllocal}/products/deleteproduct/${id}`,
+        `${urllive}/products/deleteproduct/${id}`,
         {
           headers: {
             ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : null),

@@ -6,8 +6,8 @@ import { persistor } from "../app/store";
 
 const cookie = new Cookie();
 
-const urllocal = "http://localhost:8080";
-// const urllive = "https://backerbackend.onrender.com";
+// const urllocal = "http://localhost:8080";
+const urllive = "https://demo-shop-h8s9.onrender.com"
 
 const useAuth = () => {
   const sessionToken = cookie.get("session_token");
@@ -15,7 +15,7 @@ const useAuth = () => {
 
   const login = async ({ email, password }: any) => {
     try {
-      const response = await axios.post(`${urllocal}/auth/login`, {
+      const response = await axios.post(`${urllive}/auth/login`, {
         email,
         password,
       });
@@ -31,7 +31,7 @@ const useAuth = () => {
 
   const signup = async (data: any) => {
     try {
-      const response = await axios.post(`${urllocal}/auth/signup`, data);
+      const response = await axios.post(`${urllive}/auth/signup`, data);
 
       return response.data;
     } catch (error) {
@@ -41,7 +41,7 @@ const useAuth = () => {
 
   const imageUpload = async (data: any) => {
     try {
-      const response = await axios.patch(`${urllocal}/posts/imageupload`, data);
+      const response = await axios.patch(`${urllive}/posts/imageupload`, data);
 
       return response.data;
     } catch (error) {
@@ -52,7 +52,7 @@ const useAuth = () => {
   const changePassword = async (data: any) => {
     try {
       const response = await axios.patch(
-        `${urllocal}/auth/change-password`,
+        `${urllive}/auth/change-password`,
         data,
         {
           headers: {

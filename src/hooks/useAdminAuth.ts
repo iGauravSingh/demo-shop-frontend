@@ -6,8 +6,8 @@ import { setAdmin, clearAdmin } from "../features/adminSlice";
 
 const cookie = new Cookie();
 
-const urllocal = "http://localhost:8080";
-// const urllive = "https://backerbackend.onrender.com";
+// const urllocal = "http://localhost:8080";
+const urllive = "https://demo-shop-h8s9.onrender.com"
 
 const useAdminAuth = () => {
   const adminToken = cookie.get("admin_token");
@@ -15,7 +15,7 @@ const useAdminAuth = () => {
 
   const login = async ({ email, password }: any) => {
     try {
-      const response = await axios.post(`${urllocal}/adminauth/login`, {
+      const response = await axios.post(`${urllive}/adminauth/login`, {
         email,
         password,
       });
@@ -31,7 +31,7 @@ const useAdminAuth = () => {
 
   const signup = async (data: any) => {
     try {
-      const response = await axios.post(`${urllocal}/adminauth/signup`, data);
+      const response = await axios.post(`${urllive}/adminauth/signup`, data);
 
       return response.data;
     } catch (error) {
@@ -42,7 +42,7 @@ const useAdminAuth = () => {
   const changePassword = async (data: any) => {
     try {
       const response = await axios.patch(
-        `${urllocal}/adminauth/change-password`,
+        `${urllive}/adminauth/change-password`,
         data,
         {
           headers: {
