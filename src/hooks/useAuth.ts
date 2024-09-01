@@ -7,7 +7,7 @@ import { persistor } from "../app/store";
 const cookie = new Cookie();
 
 // const urllocal = "http://localhost:8080";
-const urllive = "https://demo-shop-h8s9.onrender.com"
+const urllive = "https://demoshop-backend-production.up.railway.app"
 
 const useAuth = () => {
   const sessionToken = cookie.get("session_token");

@@ -16,7 +16,7 @@ const BlogList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1337/api/articles?populate=Image")
+      .get("https://strapi-blog-host-production.up.railway.app/api/articles?populate=Image")
       .then((response) => {
         const posts: Post[] = response.data.data;
         setPosts(posts);

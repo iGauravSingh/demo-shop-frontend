@@ -7,7 +7,7 @@ import { setAdmin, clearAdmin } from "../features/adminSlice";
 const cookie = new Cookie();
 
 // const urllocal = "http://localhost:8080";
-const urllive = "https://demo-shop-h8s9.onrender.com"
+const urllive = "https://demoshop-backend-production.up.railway.app"
 
 const useAdminAuth = () => {
   const adminToken = cookie.get("admin_token");

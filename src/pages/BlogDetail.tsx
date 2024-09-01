@@ -43,7 +43,7 @@ const BlogDetail = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1337/api/articles/${id}?populate=Image`)
+      .get(`https://strapi-blog-host-production.up.railway.app/api/articles/${id}?populate=Image`)
       .then((response) => {
         const post: Post = response.data.data;
         setPost(post);
@@ -57,7 +57,7 @@ const BlogDetail = () => {
     <div className="max-w-4xl min-h-screen mx-auto p-4 font-sans">
       {post.attributes.Image?.data && (
         <img
-          src={`http://localhost:1337${post.attributes.Image.data.attributes.formats.large.url}`}
+          src={`https://strapi-blog-host-production.up.railway.app${post.attributes.Image.data.attributes.formats.large.url}`}
           alt={post.attributes.Title}
           className="h-[250px] w-full object-contain mb-4"
         />
