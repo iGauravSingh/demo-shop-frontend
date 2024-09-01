@@ -86,6 +86,10 @@ const Products = () => {
     deleteProductwithId(id);
   };
 
+  const handleAvailibility = () => {
+    setAvailability(false);
+  };
+
   return (
     <>
       {/* add product  */}
@@ -208,9 +212,9 @@ const Products = () => {
               <th scope="col" className="py-3 px-6">
                 Product Amount
               </th>
-              {/* <th scope="col" className="py-3 px-6">
+              <th scope="col" className="py-3 px-6">
                 Product Availability
-              </th> */}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -237,7 +241,9 @@ const Products = () => {
                 <td className="py-4 px-6">{order.productName}</td>
                 <td className="py-4 px-6">{order.productdescription}</td>
                 <td className="py-4 px-6">{order.price}</td>
-                {/* <td className="py-4 px-6">{order.availability ? 'Yes': 'No' }</td> */}
+                <td className="py-4 px-6">
+                  <span onClick={handleAvailibility} className=" border px-1 py-1 cursor-pointer">{order.availability ? "Yes" : "No"}</span>
+                </td>
               </tr>
             ))}
           </tbody>
