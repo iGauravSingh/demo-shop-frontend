@@ -7,30 +7,22 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import useAdminAuth from "../../hooks/useAdminAuth";
 import { useNavigate } from "react-router-dom";
-// import useProducts from "../../hooks/useProduct";
-// import { useSelector } from "react-redux";
-// import { RootState } from "../../app/store";
 
 const AdminControl = () => {
-
   const navigate = useNavigate();
 
-  const { logout } = useAdminAuth()
+  const { logout } = useAdminAuth();
 
   const admin = useSelector((state: RootState) => state.admin.value);
-  if(!admin.admin){
+  if (!admin.admin) {
     return (
       <div className=" h-screen w-screen flex justify-center items-center">
         <h1 className=" text-4xl font-bold">Invaild Access</h1>
       </div>
-    )
+    );
   }
 
   const [selectedPage, setSelectedPage] = useState("orders");
-
-  
-
-  
 
   const handleOrders = () => {
     setSelectedPage("orders");
@@ -48,9 +40,9 @@ const AdminControl = () => {
   // };
 
   const handleAdminLogout = () => {
-    logout()
-    navigate('/')
-  }
+    logout();
+    navigate("/");
+  };
 
   return (
     <div className=" min-h-screen flex font-serif">
@@ -69,7 +61,12 @@ const AdminControl = () => {
           ACCOUNTS
         </p>
 
-        <button onClick={handleAdminLogout} className=" bg-black text-slate-100 px-4 py-2 mt-11">Logout</button>
+        <button
+          onClick={handleAdminLogout}
+          className=" bg-black text-slate-100 px-4 py-2 mt-11"
+        >
+          Logout
+        </button>
       </div>
 
       {/* right panel  */}
@@ -80,11 +77,9 @@ const AdminControl = () => {
             {selectedPage.toUpperCase()}
           </p>
           {selectedPage === "orders" && <Orders />}
-          
+
           {selectedPage === "products" && <Products />}
           {selectedPage === "accounts" && <Accounts />}
-
-          
         </div>
       </div>
     </div>

@@ -1,29 +1,26 @@
-
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const { signup } = useAuth();
 
-  const navigate = useNavigate()
-  const { signup } = useAuth()
-
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone,setphone] = useState('')
-  const [address,setAddress] = useState('')
-  const [password, setPassword] = useState('');
-
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setphone] = useState("");
+  const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // console.log('Sign-Up:', { name, email, password,phone,address });
-    const resp = await signup({ name, email, password,phone,address })
-    if(resp?.user){
-      alert("Signup Succcessful")
-      navigate("/")
+
+    const resp = await signup({ name, email, password, phone, address });
+    if (resp?.user) {
+      alert("Signup Succcessful");
+      navigate("/");
     } else {
-      alert("Invalid Data Provided During Signup")
+      alert("Invalid Data Provided During Signup");
     }
   };
 
@@ -113,7 +110,7 @@ const Signup = () => {
         </form>
         <div className="mt-4 text-center">
           <p className="text-gray-600">
-            Already have an account?{' '}
+            Already have an account?{" "}
             <Link to="/signin" className="text-black hover:underline">
               Sign in
             </Link>

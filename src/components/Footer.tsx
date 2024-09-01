@@ -5,13 +5,18 @@ const Footer = () => {
     <>
       <div className=" w-screen min-h-[200px] bg-slate-200 mt-11 font-sans">
         <div className=" flex flex-col md:flex-row md:justify-between md:items-center px-10 py-7">
-
           <div>
             <ul>
               <li className=" text-lg font-semibold mb-2">Links</li>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/blog">Blog</Link></li>
-              <li><Link to="/catalog">Catalog</Link></li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/catalog">Catalog</Link>
+              </li>
             </ul>
           </div>
 
@@ -21,7 +26,6 @@ const Footer = () => {
             <h3>soame address line 2</h3>
             <h3>phone no 7788778877</h3>
           </div>
-
         </div>
       </div>
     </>

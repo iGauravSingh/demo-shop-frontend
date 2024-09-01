@@ -1,26 +1,22 @@
-
-
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Signin = () => {
-
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { login } = useAuth();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    // console.log('Sign-In:', { email, password });
-    const resp = await login({email,password})
-    if(resp?.user){
-      navigate("/profile")
+    const resp = await login({ email, password });
+    if (resp?.user) {
+      navigate("/profile");
     } else {
-      alert("Invalid email or Password")
+      alert("Invalid email or Password");
     }
   };
 
@@ -68,7 +64,7 @@ const Signin = () => {
         </form>
         <div className="mt-4 text-center">
           <p className="text-gray-600">
-            Don't have an account?{' '}
+            Don't have an account?{" "}
             <Link to="/signup" className="text-black hover:underline">
               Sign up
             </Link>

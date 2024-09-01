@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface ImageFormats {
   large: { url: string };
@@ -42,12 +42,13 @@ const BlogDetail = () => {
   const [post, setPost] = useState<Post | null>(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:1337/api/articles/${id}?populate=Image`)
-      .then(response => {
+    axios
+      .get(`http://localhost:1337/api/articles/${id}?populate=Image`)
+      .then((response) => {
         const post: Post = response.data.data;
         setPost(post);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }, [id]);
 
   if (!post) return <div>Loading...</div>;

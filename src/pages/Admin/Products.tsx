@@ -3,12 +3,10 @@ import useProducts from "../../hooks/useProduct";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 
-
 const Products = () => {
-  
-  const { fetchProductsList, deleteProductwithId, createProducts} = useProducts()
+  const { fetchProductsList, deleteProductwithId, createProducts } =
+    useProducts();
 
-  
   // const [categoryDropStatus, setCategoryDropStatus] = useState(false)
   const [productName, setproductName] = useState("");
   const [productImage, setproductImage] = useState("");
@@ -24,28 +22,25 @@ const Products = () => {
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        fetchProductsList()
+        fetchProductsList();
       } catch (error) {
-        console.log("error fetching data")
+        console.log("error fetching data");
       }
-    }
-    fetchProductData()
-  },[])
+    };
+    fetchProductData();
+  }, []);
 
-  const productData = useSelector((state: RootState) => state.products.value)
-  
+  const productData = useSelector((state: RootState) => state.products.value);
 
-  if(productData.isLoading){
+  if (productData.isLoading) {
     return (
       <div>
-        
         <div className="absolute inset-0 flex items-center justify-center z-10 bg-black bg-opacity-75">
           {/* Spinner */}
           <div className="w-12 h-12 border-4 border-gray-200 border-t-4 border-t-blue-500 rounded-full animate-spin"></div>
         </div>
-        
       </div>
-    )
+    );
   }
 
   const handleNameChange = (e: any) => {
@@ -83,13 +78,13 @@ const Products = () => {
       productdescription: description,
       price,
       availability: availability,
-      productImage
+      productImage,
     });
   };
 
-  const handleDelate = (id:any) => {
-    deleteProductwithId(id)
-  }
+  const handleDelate = (id: any) => {
+    deleteProductwithId(id);
+  };
 
   return (
     <>
@@ -104,28 +99,28 @@ const Products = () => {
           action=""
         >
           <div className=" flex items-center gap-7">
-          <div className=" flex flex-col gap-5">
-          <label htmlFor="productName">productName</label>
-          <input
-            id="productName"
-            onChange={handleNameChange}
-            value={productName}
-            type="text"
-            placeholder="name of product.."
-          />
-          <label htmlFor="productImage">productImage</label>
-          <input
-            id="productImage"
-            onChange={handleImageChange}
-            value={productImage}
-            type="text"
-            placeholder="Image link.."
-          />
-          </div>
-          {/* <label htmlFor="category">category</label> */}
+            <div className=" flex flex-col gap-5">
+              <label htmlFor="productName">productName</label>
+              <input
+                id="productName"
+                onChange={handleNameChange}
+                value={productName}
+                type="text"
+                placeholder="name of product.."
+              />
+              <label htmlFor="productImage">productImage</label>
+              <input
+                id="productImage"
+                onChange={handleImageChange}
+                value={productImage}
+                type="text"
+                placeholder="Image link.."
+              />
+            </div>
+            {/* <label htmlFor="category">category</label> */}
 
-          {/* category  */}
-          {/* <div className=" w-16 bg-slate-400">
+            {/* category  */}
+            {/* <div className=" w-16 bg-slate-400">
             <div onClick={()=> setCategoryDropStatus(prevState => !prevState)} className=" relative">
               <p >{category}</p>
               <ul  className={`absolute ${categoryDropStatus ? 'block' : 'hidden'} top-6 left-0 bg-slate-200 z-30`} >
@@ -134,43 +129,43 @@ const Products = () => {
             </div>
           </div> */}
 
-          <div className=" flex flex-col gap-5">
-          <label htmlFor="price">price</label>
-          <input
-            id="price"
-            onChange={handlePriceChange}
-            value={price}
-            type="text"
-            placeholder="price.."
-          />
+            <div className=" flex flex-col gap-5">
+              <label htmlFor="price">price</label>
+              <input
+                id="price"
+                onChange={handlePriceChange}
+                value={price}
+                type="text"
+                placeholder="price.."
+              />
 
-<label htmlFor="discription">discription</label>
-          <input
-            id="discription"
-            onChange={handledescription}
-            value={description}
-            type="text"
-            placeholder="Describe product.."
-          />
-          </div>
-          {/* <label htmlFor="stars">stars</label> */}
-          {/* <input
+              <label htmlFor="discription">discription</label>
+              <input
+                id="discription"
+                onChange={handledescription}
+                value={description}
+                type="text"
+                placeholder="Describe product.."
+              />
+            </div>
+            {/* <label htmlFor="stars">stars</label> */}
+            {/* <input
             id="stars"
             onChange={handleStarChange}
             value={stars}
             type="text"
             placeholder="Star.."
           /> */}
-          {/* <label htmlFor="discount">discount</label> */}
-          {/* <input
+            {/* <label htmlFor="discount">discount</label> */}
+            {/* <input
             id="discount"
             onChange={handleDiscount}
             value={discount}
             type="text"
             placeholder="Discount percent.."
           /> */}
-          {/* <label htmlFor="quantity">quantity in stock</label> */}
-          {/* <input
+            {/* <label htmlFor="quantity">quantity in stock</label> */}
+            {/* <input
             id="quantity"
             onChange={handleQuantity}
             value={quantity}
@@ -178,16 +173,15 @@ const Products = () => {
             placeholder="Quantity in STock.."
           /> */}
 
-          {/* <input onChange={handlefeatured} value={featured} type="checkbox" placeholder='price..' /> */}
-          
+            {/* <input onChange={handlefeatured} value={featured} type="checkbox" placeholder='price..' /> */}
 
-          <div className="">
-          <input
-            className=" bg-black text-white px-2 py-2 cursor-pointer"
-            type="submit"
-            placeholder=""
-          />
-          </div>
+            <div className="">
+              <input
+                className=" bg-black text-white px-2 py-2 cursor-pointer"
+                type="submit"
+                placeholder=""
+              />
+            </div>
           </div>
         </form>
       </div>
@@ -229,8 +223,17 @@ const Products = () => {
                     : "bg-white dark:bg-gray-700"
                 }`}
               >
-                
-                <td className="py-4 px-6"><span className=' flex gap-2 items-center'><p onClick={()=>handleDelate(order.id)} className=' text-red-500 text-xl cursor-pointer'>X</p>{order.id}</span></td>
+                <td className="py-4 px-6">
+                  <span className=" flex gap-2 items-center">
+                    <p
+                      onClick={() => handleDelate(order.id)}
+                      className=" text-red-500 text-xl cursor-pointer"
+                    >
+                      X
+                    </p>
+                    {order.id}
+                  </span>
+                </td>
                 <td className="py-4 px-6">{order.productName}</td>
                 <td className="py-4 px-6">{order.productdescription}</td>
                 <td className="py-4 px-6">{order.price}</td>

@@ -2,14 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAdminAuth from "../hooks/useAdminAuth";
 
-
 const AdminSignin = () => {
-
-  
-
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { login } = useAdminAuth();
 
@@ -17,14 +13,13 @@ const AdminSignin = () => {
     e.preventDefault();
 
     // console.log('Sign-In:', { email, password });
-    const resp = await login({email,password})
-    if(resp?.user){
-      navigate("/admindashboard")
+    const resp = await login({ email, password });
+    if (resp?.user) {
+      navigate("/admindashboard");
     } else {
-      alert("Invalid email or Password")
+      alert("Invalid email or Password");
     }
   };
-
 
   return (
     <div className="min-h-screen flex items-center justify-center font-sans">
@@ -68,10 +63,9 @@ const AdminSignin = () => {
             Sign In
           </button>
         </form>
-        
       </div>
     </div>
   );
-}
+};
 
-export default AdminSignin
+export default AdminSignin;

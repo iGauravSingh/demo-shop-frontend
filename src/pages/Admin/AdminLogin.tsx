@@ -1,19 +1,19 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
-    const navigate = useNavigate()
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = (e: any) => {
     e.preventDefault();
-    // Here you can add your login logic
-    if(username === 'admin' && password === 'admin'){
-        localStorage.setItem('admin','admin')
-        navigate('/adminsignin')
-    } else{
-        navigate('/')
+
+    if (username === "admin" && password === "admin") {
+      localStorage.setItem("admin", "admin");
+      navigate("/adminsignin");
+    } else {
+      navigate("/");
     }
   };
 
@@ -23,7 +23,12 @@ const AdminLogin = () => {
         <h2 className="text-2xl font-bold mb-4">Admin Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 font-bold mb-2">Username</label>
+            <label
+              htmlFor="username"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Username
+            </label>
             <input
               type="text"
               id="username"
@@ -34,7 +39,12 @@ const AdminLogin = () => {
             />
           </div>
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-gray-700 font-bold mb-2"
+            >
+              Password
+            </label>
             <input
               type="password"
               id="password"

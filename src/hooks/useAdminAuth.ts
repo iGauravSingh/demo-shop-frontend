@@ -9,66 +9,61 @@ const cookie = new Cookie();
 const urllocal = "http://localhost:8080";
 // const urllive = "https://backerbackend.onrender.com";
 
-
 const useAdminAuth = () => {
+  const adminToken = cookie.get("admin_token");
+  const dispatch = useDispatch();
 
-    const adminToken = cookie.get("admin_token");
-    const dispatch = useDispatch();
-   
-    
-  
-    const login = async ({ email, password }: any) => {
-      try {
-          const response = await axios.post(`${urllocal}/adminauth/login`, {
-              email,
-              password,
-            });
-            // console.log("from useAuth ", response.data);
-            const { user, token } = response.data;
-            cookie.set("admin_token", token);
-            dispatch(
-                setAdmin(user)
-            );
-            return response.data;
-      } catch (error) {
-          return error
-          
-      }
-    };
+  const login = async ({ email, password }: any) => {
+    try {
+      const response = await axios.post(`${urllocal}/adminauth/login`, {
+        email,
+        password,
+      });
 
-    const signup = async (data:any) => {
-        try {
-          const response = await axios.post(`${urllocal}/adminauth/signup`, data);
-        
-        return response.data;
-        } catch (error) {
-          return error
+      const { user, token } = response.data;
+      cookie.set("admin_token", token);
+      dispatch(setAdmin(user));
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  const signup = async (data: any) => {
+    try {
+      const response = await axios.post(`${urllocal}/adminauth/signup`, data);
+
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  const changePassword = async (data: any) => {
+    try {
+      const response = await axios.patch(
+        `${urllocal}/adminauth/change-password`,
+        data,
+        {
+          headers: {
+            ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : null),
+          },
         }
-      };
-    
-    
-      const changePassword = async (data: any) => {
-        try {
-          const response = await axios.patch(`${urllocal}/adminauth/change-password`, data, {
-            headers: {
-              ...(adminToken ? { Authorization: `Bearer ${adminToken}` } : null),
-            },
-          })
-          // console.log(response.data)
-          return response.data
-          // console.log(response.data)
-        } catch (error) {
-          console.log(error)
-        }
-      }
+      );
 
-      const logout = () => {
-        cookie.remove("admin_token");
-        return dispatch(clearAdmin());
-        // persistor.purge()
-      };
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-      return { signup, login, logout, changePassword };
+  const logout = () => {
+    cookie.remove("admin_token");
+    return dispatch(clearAdmin());
+    // persistor.purge()
+  };
+
+  return { signup, login, logout, changePassword };
 };
 
 export default useAdminAuth;
