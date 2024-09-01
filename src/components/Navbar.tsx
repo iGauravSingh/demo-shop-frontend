@@ -13,6 +13,7 @@ const navmenu = [
   { id: 1, name: "Home", link: "/" },
   { id: 2, name: "Catalog", link: "/catalog" },
   { id: 3, name: "Blog", link: "/blog" },
+  { id: 4, name: "Admin", link: "/adminsignin" },
 ];
 
 const Navbar = () => {
