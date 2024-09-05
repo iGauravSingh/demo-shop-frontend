@@ -63,6 +63,7 @@ const BlogDetail = () => {
         />
       )}
       <h1 className="text-4xl font-bold mb-4">{post.attributes.Title}</h1>
+      {/* By Gaurav SIngh  */}
       <div className="prose">
         {post.attributes.Content.map((contentItem, index) => (
           <div key={index}>

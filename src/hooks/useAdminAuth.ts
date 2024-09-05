@@ -61,6 +61,7 @@ const useAdminAuth = () => {
     cookie.remove("admin_token");
     return dispatch(clearAdmin());
     // persistor.purge()
+    // By Gaurav SIngh 
   };
 
   return { signup, login, logout, changePassword };
